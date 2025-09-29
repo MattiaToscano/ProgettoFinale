@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('film_genre', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('film_id')->constrained()->onDelete('cascade');
+            $table->foreignId('genre_id')->constrained()->onDelete('cascade');
+            //onDelete('cascade')= Se elimino un film o un genere, vengono eliminate automaticamente anche le relazioni dalla tabella pivot
+            $table->unique(['film_id','genre_id']);
             $table->timestamps();
         });
     }
