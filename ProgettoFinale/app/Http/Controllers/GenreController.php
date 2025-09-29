@@ -14,51 +14,56 @@ class GenreController extends Controller
         return view('genres.index', compact('genres'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    
     public function create()
     {
-        //
+        return view('genres.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    //Salva nuovo genere
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required'
+        ]);
+        
+        Genre::create($request->all());
+        return redirect()->route('genres.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
+    //Mostra singolo genere
     public function show(string $id)
     {
-        //
+        $genre = Genre::find($id);
+        return view('genres.show', compact('genre'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+    //Modifica
     public function edit(string $id)
     {
-        //
+        $genre = Genre::find($id);
+        return view('genres.edit', compact('genre'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+   //Aggiorna
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required'
+        ]);
+
+        $genre = Genre::find($id);
+        $genre->update($request->all());
+        return redirect()->route('genres.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    //Elimina
     public function destroy(string $id)
     {
-        //
+        $genre = Genre::find($id);
+        $genre->delete();
+        return redirect()->route('genres.index');
     }
 }
