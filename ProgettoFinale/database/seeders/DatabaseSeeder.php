@@ -11,14 +11,7 @@ class DatabaseSeeder extends Seeder
    
     public function run(): void
     {
-        
-
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
-        
-        // Eseguo i seeder per generi e film
+        // Eseguo solo i seeder per generi e film
         $this->call([
             GenreSeeder::class,
             FilmSeeder::class,

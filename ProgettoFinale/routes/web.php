@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\FilmController;
-use App\Http\Controllers\GenreController;
+use App\Http\Controllers\Admin\FilmController;
+use App\Http\Controllers\Admin\GenreController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,7 +19,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     
     // Rotte per Film e Generi 
-    Route::resource('films', FilmController::class);
+    Route::resource('films', FilmController::class)->middleware(['auth', 'verified']);
     Route::resource('genres', GenreController::class);
 });
 

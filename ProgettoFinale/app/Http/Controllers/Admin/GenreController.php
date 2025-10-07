@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Genre;
 use Illuminate\Http\Request;
 
@@ -33,36 +34,32 @@ class GenreController extends Controller
     }
 
     //Mostra singolo genere
-    public function show(string $id)
+    public function show(Genre $genre)
     {
-        $genre = Genre::find($id);
         return view('genres.show', compact('genre'));
     }
 
     //Modifica
-    public function edit(string $id)
+    public function edit(Genre $genre)
     {
-        $genre = Genre::find($id);
         return view('genres.edit', compact('genre'));
     }
 
    //Aggiorna
-    public function update(Request $request, string $id)
+    public function update(Request $request, Genre $genre)
     {
         $request->validate([
             'name' => 'required',
             'description' => 'required'
         ]);
 
-        $genre = Genre::find($id);
         $genre->update($request->all());
         return redirect()->route('genres.index');
     }
 
     //Elimina
-    public function destroy(string $id)
+    public function destroy(Genre $genre)
     {
-        $genre = Genre::find($id);
         $genre->delete();
         return redirect()->route('genres.index');
     }

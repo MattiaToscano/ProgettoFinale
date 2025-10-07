@@ -10,9 +10,7 @@ use Faker\Generator as Faker;
 
 class FilmSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
+    
     public function run(Faker $faker): void
     {
         // Recupero tutti i generi disponibili
@@ -27,7 +25,6 @@ class FilmSeeder extends Seeder
                 'duration_minutes' => $faker->numberBetween(80, 180), // Durata 80-180 min
                 'director' => $faker->name(), // Nome regista casuale
                 'rating' => $faker->randomFloat(1, 1, 10), // Voto da 1.0 a 10.0
-                'poster_url' => $faker->imageUrl(300, 450, 'movies'), // URL poster casuale
             ]);
             
             // Assegno 1-3 generi casuali a ogni film

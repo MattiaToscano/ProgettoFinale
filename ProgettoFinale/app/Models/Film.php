@@ -13,7 +13,8 @@ class Film extends Model
         'duration_minutes',
         'director',
         'rating',
-        'poster_url'
+        'poster_path',
+        'trailer_url'
     ];
 
     public function genres()
