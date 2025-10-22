@@ -11,8 +11,18 @@
 </head>
 <body class="bg-light">
     <div class="min-vh-100">
-        <main>
-            @yield('content')
+        
+        @isset($header)
+            <header class="bg-white shadow py-3">
+                <div class="container">
+                    {{ $header }}
+                </div>
+            </header>
+        @endisset
+
+        
+        <main class="container mt-4"> 
+                @yield('content')
         </main>
     </div>
     

@@ -20,10 +20,7 @@ Route::get('/films/{id}', function ($id) {
     return response()->json($film)->header('Access-Control-Allow-Origin', '*');
 });
 
-// Lista generi
-Route::get('/genres', function () {
-    return response()->json(Genre::all())->header('Access-Control-Allow-Origin', '*');
-});
+
 
 
 

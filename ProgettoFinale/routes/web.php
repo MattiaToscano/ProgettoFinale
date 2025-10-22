@@ -9,6 +9,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/esercizio', function () {
+    return view('esercizio');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -20,7 +24,7 @@ Route::middleware('auth')->group(function () {
     
     // Rotte per Film e Generi 
     Route::resource('films', FilmController::class)->middleware(['auth', 'verified']);
-    Route::resource('genres', GenreController::class);
+    
 });
 
 require __DIR__.'/auth.php';

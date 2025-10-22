@@ -63,7 +63,7 @@
                                     <tr>
                                         <td class="fw-bold text-muted">Voto:</td>
                                         <td>
-                                            <span class="badge bg-warning text-dark">{{ $film->rating }}/10</span>
+                                            <span class="badge bg-light text-dark">{{ $film->rating }}/10</span>
                                         </td>
                                     </tr>
                                     @endif

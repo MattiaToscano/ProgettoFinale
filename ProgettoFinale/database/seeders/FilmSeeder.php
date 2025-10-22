@@ -21,7 +21,7 @@ class FilmSeeder extends Seeder
             $film = Film::create([
                 'title' => $faker->sentence(3, false), // Titolo casuale di 3 parole
                 'description' => $faker->paragraph(4), // Descrizione di 4 frasi
-                'release_year' => $faker->numberBetween(1980, 2024), // Anno tra 1980-2024
+                'release_year' => $faker->numberBetween(1980, 2026), // Anno tra 1980-2024
                 'duration_minutes' => $faker->numberBetween(80, 180), // Durata 80-180 min
                 'director' => $faker->name(), // Nome regista casuale
                 'rating' => $faker->randomFloat(1, 1, 10), // Voto da 1.0 a 10.0

@@ -36,16 +36,6 @@ class FilmController extends Controller
      */
     public function store(Request $request)
     {
-        //Validazioni semplici
-        $request->validate([
-            'title' => 'nullable',
-            'description' => 'nullable',
-            'release_year' => 'nullable',
-            'duration_minutes' => 'nullable',
-            'director' => 'nullable',
-            'poster' => 'nullable'
-        ]);
-
         //Creo il film
         $film = Film::create($request->except(['poster']));
         
@@ -95,22 +85,13 @@ class FilmController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $request->validate([
-            'title' => 'nullable',
-            'description' => 'nullable',
-            'release_year' => 'nullable',
-            'duration_minutes' => 'nullable',
-            'director' => 'nullable',
-            'poster' => 'nullable'
-        ]);
-        
         $film = Film::find($id);
         
         // Gestione upload poster
         if ($request->hasFile('poster')) {
             $file = $request->file('poster');
             
-            // Salva usando Storage::disk('public')->put()
+            // Salvo usando Storage::disk('public')->put()
             $poster_path = Storage::disk('public')->put('uploads', $file);
             $film->poster_path = $poster_path;
         }
@@ -133,32 +114,5 @@ class FilmController extends Controller
         $film->delete();
 
         return redirect()->route('films.index');
-    }
-
-    // =============== METODI PER UPLOAD FILE ===============
-    
-    // Upload semplice di un poster
-    public function uploadPoster(Request $request, $filmId)
-    {
-        $film = Film::find($filmId);
-        $file = $request->file('poster');
-        
-        // Salva usando Storage::disk('public')->put()
-        $poster_path = Storage::disk('public')->put('uploads', $file);
-        $film->poster_path = $poster_path;
-        $film->save();
-
-        return response()->json([
-            'message' => 'Poster caricato!',
-            'path' => $poster_path,
-            'url' => asset('storage/' . $poster_path)
-        ]);
-    }
-
-    // Lista file
-    public function listFiles()
-    {
-        $files = Storage::disk('public')->files('uploads');
-        return response()->json(['files' => $files]);
     }
 }

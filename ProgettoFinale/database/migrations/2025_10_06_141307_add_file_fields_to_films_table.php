@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::table('films', function (Blueprint $table) {
             $table->string('poster_path')->nullable()->after('description');
-            $table->string('trailer_url')->nullable()->after('poster_path');
         });
     }
 
@@ -23,7 +22,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('films', function (Blueprint $table) {
-            $table->dropColumn(['poster_path', 'trailer_url']);
+            $table->dropColumn(['poster_path']);
         });
     }
 };

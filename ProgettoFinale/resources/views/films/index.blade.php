@@ -68,7 +68,7 @@
                             
                             <!-- Descrizione -->
                             <p class="text-muted small mb-3 flex-grow-1">
-                                {{ Str::limit($film->description, 120) }}
+                                {{ $film->description }}
                             </p>
                             
                             <!-- Bottoni azioni -->
@@ -99,21 +99,7 @@
                         </div>
                     </div>
                 </div>
-            @empty
-                <!-- Stato vuoto -->
-                <div class="col-12">
-                    <div class="text-center py-5">
-                        <div class="text-muted mb-4">
-                            <i class="fas fa-film fa-5x"></i>
-                        </div>
-                        <h3 class="text-muted mb-3">La tua collezione è vuota</h3>
-                        <p class="text-muted mb-4">Inizia ad aggiungere i tuoi film preferiti per creare la tua collezione personalizzata!</p>
-                        <a href="{{ route('films.create') }}" class="btn btn-primary btn-lg">
-                            <i class="fas fa-plus me-2"></i>Aggiungi il primo film
-                        </a>
-                    </div>
-                </div>
-            @endforelse
+            @endforeach
         </div>
     </div>
 </div>

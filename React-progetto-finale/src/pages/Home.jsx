@@ -21,14 +21,14 @@ function Home() {
         }
     };
 
-    // Colori Bootstrap semplici - facili da capire per novizi
+    // Colori Bootstrap 
     const cardColors = [
-        'bg-primary',   // blu
-        'bg-secondary', // grigio  
-        'bg-success',   // verde
-        'bg-danger',    // rosso
-        'bg-warning',   // giallo
-        'bg-info'       // azzurro
+        'bg-primary',
+        'bg-secondary',
+        'bg-success',
+        'bg-danger',
+        'bg-warning',
+        'bg-info'
     ];
 
     if (loading) {
